@@ -50,6 +50,15 @@ The invisible ::after filler forces justify-content: space-between to keep three
   height: 20px;
 }
 
+#checked {
+  background: #b7d7ff;
+}
+
+#fade {
+  z-index: 20;
+  background-color: rgb(249, 229, 229);
+}
+
 /* -------------------------------------------------
    2. ≥ 500 px – 3-column grid
    ------------------------------------------------- */
