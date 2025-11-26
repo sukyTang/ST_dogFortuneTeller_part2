@@ -5,7 +5,11 @@
 
 const unchecked = "./images/unchecked.png";
 const checked = "./images/checked.png";
+
 const questions = document.getElementsByClassName("choice-grid");
+const reset = document.getElementById("restart");
+const resTitle = document.getElementById("title");
+const resContent = document.getElementById("content");
 
 const question1 = questions[0].children;
 const question2 = questions[1].children;
@@ -16,45 +20,47 @@ var twoChoice = null;
 var threeChoice = null;
 
 
-function choiceClick(qGrid, item) {
+function choiceClick() {
     /* if there's a click on one of the elements in a choice-grid, 
     then first detects if there's another one checked, then formats*/ 
-    var qNum = qGrid[0].dataset.questionId;
+    var qNum = this.dataset.questionId;
+    var grid = this.parentNode.children;
+
     //console.log(oneChoice,twoChoice,threeChoice);
     //console.log(qGrid[0].dataset,item.dataset);
-    var yourResult = result();
-    
-
-    // my removeEventListeners are not working so I'll just put this here
-    if(yourResult != null) {
-        return yourResult;
-    }
-
-    const checkbox = item.querySelector(".checkbox");
-    checkbox.src = chooseQ(qNum, item);
+    const checkbox = this.querySelector(".checkbox");
+    checkbox.src = chooseQ(qNum, this);
 
     if (retNum(qNum)) {
-        for (i=0; i < qGrid.length; i++) {
-        if (qGrid[i] != item) {
-            qGrid[i].id = "fade";
+        for (i=0; i < grid.length; i++) {
+            
+        if (grid[i] != this) {
+            grid[i].id = "fade";
         }
         }
     } else {
-        for (i=0; i < qGrid.length; i++) {
-            qGrid[i].id = "";
+        for (i=0; i < grid.length; i++) {
+            grid[i].id = "";
         }
     }
 
-    if(yourResult != null) {
-        console.log("results");
+    if(result() != null) {
+        var myResult = giveResult(result());
+        //console.log(myResult['title']);
+        
+
+        resTitle.innerText = myResult['title'];
+        resContent.innerText = myResult['contents'];
+        reset.innerText = "reset";
+
+        for (i=0;i < 9; i++) {
+            question1[i].removeEventListener("click", choiceClick);
+            question2[i].removeEventListener("click", choiceClick);
+            question3[i].removeEventListener("click", choiceClick);
+        }
     }
 
-    // getting rid of eventlisteners, but it's not working
-    for (i=0;i < 9; i++) {
-            question1[i].removeEventListener("click", (e) => {choiceClick(question1, e.currentTarget)});
-            question2[i].removeEventListener("click", (e) => {choiceClick(question2, e.currentTarget)});
-            question3[i].removeEventListener("click", (e) => {choiceClick(question3, e.currentTarget)});
-    }
+    return
 }
 
 function retNum(num) {
@@ -125,14 +131,20 @@ function idSum(idOne, idTwo, idThree) {
 function giveResult(id) {
     for (key in RESULTS_MAP) {
             if (RESULTS_MAP[key].id == id) {
-                console.log(RESULTS_MAP[key]);
+                // console.log(RESULTS_MAP[key]);
+                return RESULTS_MAP[key]
             }
         }
 }
 
 // Main
-for (i=0;i < 9; i++) {
-    question1[i].addEventListener("click", (e) => {choiceClick(question1, e.currentTarget)});
-    question2[i].addEventListener("click", (e) => {choiceClick(question2, e.currentTarget)});
-    question3[i].addEventListener("click", (e) => {choiceClick(question3, e.currentTarget)});
+
+window.onload = function() {
+    for (i=0;i < 9; i++) {
+    question1[i].addEventListener("click", choiceClick);
+    question2[i].addEventListener("click", choiceClick);
+    question3[i].addEventListener("click", choiceClick);
+    }
+
+    reset.addEventListener("click", () => {window.scrollTo(0,0);window.location.reload();})
 }
