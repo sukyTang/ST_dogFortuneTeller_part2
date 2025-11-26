@@ -51,7 +51,7 @@ function choiceClick() {
 
         resTitle.innerText = myResult['title'];
         resContent.innerText = myResult['contents'];
-        reset.innerText = "reset";
+        reset.style.visibility = "visible";
 
         for (i=0;i < 9; i++) {
             question1[i].removeEventListener("click", choiceClick);

@@ -93,6 +93,8 @@ Paragraph
   text-align: center;
   font-size: 24px;
   font-weight: bold;
+  padding: 10px;
+  visibility:hidden;
   background-color: #cecece;
 }
 
