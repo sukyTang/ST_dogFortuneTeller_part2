@@ -1,4 +1,3 @@
-/* Why is git on vs code macos such a pain */
 const RESULTS_MAP = {
   'blep': {
     id: 0,
@@ -46,3 +45,10 @@ const RESULTS_MAP = {
     contents: "You call it \"meditation\", but it's more like \"closing your eyes between hitting snooze\". You call it \"lifting weights\", but it's more like \"a good excuse to drink Gatorade\". You describe yourself as \"C-type\" -- \"C for chill\". Your jokes are often well timed and enjoyed by all. You transcend difficulties in life, by smoothly flowing around them. You eat fortune cookies, but never look at the fortune because of your deep internal confidence. Napping is a skill you practice often, but man oh man, once your internal engine gets going you focus 100%. Maybe even 110%. It's like a lot of focus. So much focus. Buckets of Focus. A whole Ford Focus. But right now, you're snoozing and that's cool. You'll solve P=NP a little later.",
   }
 };
+
+/*
+Score quiz by adding the ids from each answer and then divide by 3.
+
+*/
+
+

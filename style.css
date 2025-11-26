@@ -55,8 +55,11 @@ The invisible ::after filler forces justify-content: space-between to keep three
 }
 
 #fade {
-  z-index: 20;
-  background-color: rgb(249, 229, 229);
+  opacity: 50%;
+}
+
+.results {
+  margin-top: 0;
 }
 
 /* -------------------------------------------------
