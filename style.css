@@ -51,12 +51,53 @@ The invisible ::after filler forces justify-content: space-between to keep three
 }
 
 #checked {
-  background: #b7d7ff;
+  background: #cfe3ff;
 }
 
 #fade {
-  z-index: 20;
-  background-color: rgb(249, 229, 229);
+  opacity: 0.6;
+}
+
+
+/*
+
+40px on top
+20px of padding on all sides
+20px margin on bottom
+
+Title to results
+18px break
+Paragraph
+18px break
+50px tall restart quiz button, background: #cecece, on hover change to #e0e0e0 
+
+*/
+.results {
+  padding: 20px;
+  margin-top: 40;
+  margin-bottom: 20px;
+}
+
+.results #title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.results #content {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.results #restart {
+  /*display: none;*/
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #cecece;
+}
+
+.results #restart:hover {
+  background-color: #e0e0e0;
 }
 
 /* -------------------------------------------------
